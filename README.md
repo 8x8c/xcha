@@ -1,6 +1,8 @@
 # xcha 
 
 
+This app is made with 2 files. It has only 3 command functions. It is incredibly easy to feed the code to ai and have it change anything you want. My goal was to make the most secure encryption with the simplest app possible. 
+
 Xcha provides a straightforward and effective command-line tool for managing file encryption and decryption using robust cryptographic primitives available in Rust. Its modular design clearly separates key generation, encryption, and decryption operations, making the code easy to understand, maintain, and extend.
 
 The key file is always named key.key and is expected to reside in the same directory as the executable. You have two options for key management: either generate key.key from a password (which produces a deterministic key using SHA3-256) or supply your own 256-bit (32-byte) key by creating a file named key.key in the executable’s directory. This approach ensures consistency and simplifies key handling across all operations.
@@ -24,7 +26,6 @@ encrypts plain.txt to a file called encrypted.dat
 
 decrypts encrypted.dat to a file called decrypted.txt 
 
-# User Friendly
 
-This app is made with 2 files. It has only 3 command functions. It is incredibly easy to feed the code to ai and have it change anything you want. 
+
 
