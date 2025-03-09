@@ -24,4 +24,7 @@ encrypts plain.txt to a file called encrypted.dat
 
 decrypts encrypted.dat to a file called decrypted.txt 
 
+# User Friendly
+
+This app is made with 2 files. It has only 3 command functions. It is incredibly easy to feed the code to ai and have it change anything you want. 
 
