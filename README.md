@@ -24,10 +24,14 @@ encrypts plain.txt to a file called encrypted.dat
 # Decrypt a file 
 ./xcha -d encrypted.dat decrypted.txt  
 
+decrypts encrypted.dat to a file called decrypted.txt 
+
+# notes
+See /docs for more info. 
 
 This version does not encrypt in chunks. MAKE SURE you have enough ram for the size of file you need to encrypt. For example, to encrypt a 5 gb file, you would need 10 gb of free ram. With a fast cpu and a 64 gb ddr5 you can encrypt just about anything. On a small laptop with 4gb ram, you would have to see how much free ram you have before encrypting very large files. Chunk based processing could handle any filesize with less ram- but it also ads more complexity. This app in its current form is made to be as simple, secure and reliable as possible, so i did not implement chunk based processing. 
 
-decrypts encrypted.dat to a file called decrypted.txt 
+
 
 
 
