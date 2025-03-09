@@ -10,10 +10,18 @@ The app utilizes XChaCha20Poly1305 for encryption. This choice was made because 
 While Xcha is ideal for personal and small-scale projects, it is important to recognize that professional, production-grade encryption applications are generally superior in terms of auditing, testing, and handling edge cases. Nonetheless, Xcha offers a practical, secure, and user-friendly solution for everyday encryption needs. This entire app is cargo.toml and main.rs- other encryption apps are over 100 files. The commands to use this app are simple. There are only 3 commands. Key maker (optional), encrypt or decrypt. Very simple and easy to use. 
 
 # example commands 
-./xcha -k adelia  will make key.key - the key will be the same every time you use the password "adelia". You can use any password to make a specific key. Or you can make a key.key file with your own key. This is very versatile. 
+./xcha -k adelia  
 
-./xcha -e plain.txt encrypted.dat   encrypts plain.txt to a file called encrypted.dat 
+will make key.key - the key will be the same every time you use the password "adelia". You can use any password to make a specific key. Or you can make a key.key file with your own key. This is very versatile. 
 
-./xcha -d encrypted.dat decrypted.txt  decrypts encrypted.dat to a file called decrypted.txt 
+
+./xcha -e plain.txt encrypted.dat  
+
+encrypts plain.txt to a file called encrypted.dat 
+
+
+./xcha -d encrypted.dat decrypted.txt  
+
+decrypts encrypted.dat to a file called decrypted.txt 
 
 
