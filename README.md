@@ -26,6 +26,10 @@ encrypts plain.txt to a file called encrypted.dat
 
 decrypts encrypted.dat to a file called decrypted.txt 
 
+# Tampering 
+
+If even one byte of the encrypted file is changed, it will not be able to be decrypted. It will return the error Error: "Decryption failed: Error"  
+
 # notes
 See /docs for more info. 
 
