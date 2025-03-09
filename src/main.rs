@@ -1,6 +1,6 @@
-
 use std::fs;
 use std::path::Path;
+use std::process;
 
 use clap::{Arg, Command, ArgAction};
 use sha3::{Digest, Sha3_256};
@@ -42,7 +42,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Some(password) = matches.get_one::<String>("key") {
         let key_path = Path::new("key.key");
         if key_path.exists() {
-            eprintln!("Warning: key.key already exists and will be overwritten.");
+            eprintln!("Error: key.key already exists. Aborting to avoid overwriting.");
+            process::exit(1);
         }
         let mut hasher = Sha3_256::new();
         hasher.update(password.as_bytes());
@@ -56,11 +57,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Some(values) = matches.get_many::<String>("encrypt") {
         let values: Vec<_> = values.into_iter().collect();
         if values.len() != 2 {
-            eprintln!("Encryption requires exactly two arguments: INPUT and OUTPUT.");
-            return Ok(());
+            eprintln!("Error: Encryption requires exactly two arguments: INPUT and OUTPUT.");
+            process::exit(1);
         }
         let input_file = values[0];
         let output_file = values[1];
+
+        // Check if the output file already exists.
+        if Path::new(output_file).exists() {
+            eprintln!("Error: Output file '{}' already exists. Aborting to avoid overwriting.", output_file);
+            process::exit(1);
+        }
 
         // Load the 32-byte key.
         let key_bytes = fs::read("key.key")
@@ -95,11 +102,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Some(values) = matches.get_many::<String>("decrypt") {
         let values: Vec<_> = values.into_iter().collect();
         if values.len() != 2 {
-            eprintln!("Decryption requires exactly two arguments: INPUT and OUTPUT.");
-            return Ok(());
+            eprintln!("Error: Decryption requires exactly two arguments: INPUT and OUTPUT.");
+            process::exit(1);
         }
         let input_file = values[0];
         let output_file = values[1];
+
+        // Check if the output file already exists.
+        if Path::new(output_file).exists() {
+            eprintln!("Error: Output file '{}' already exists. Aborting to avoid overwriting.", output_file);
+            process::exit(1);
+        }
 
         // Load the key.
         let key_bytes = fs::read("key.key")
@@ -129,4 +142,5 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("No valid command provided. Use -e, -d, or -k.");
     Ok(())
 }
+
 
